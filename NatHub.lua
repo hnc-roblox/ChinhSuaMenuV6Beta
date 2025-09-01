@@ -1,83 +1,9 @@
--- ESP Mobs - Green Circle (5000 studs, small circle)
-
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local Camera = workspace.CurrentCamera
-local LocalPlayer = Players.LocalPlayer
-
--- lưu ESP
-local mobESP = {}
-local MAX_DISTANCE = 5000 -- 👈 chỉ quét quái trong phạm vi 5000 stud
-
--- tạo circle
-local function createCircle()
-    local circle = Drawing.new("Circle")
-    circle.Color = Color3.fromRGB(0, 255, 0) -- xanh lá
-    circle.Thickness = 2
-    circle.NumSides = 50
-    circle.Filled = false
-    circle.Radius = 1.2 -- 👈 nhỏ gấp 10 lần (so với 12)
-    circle.Visible = true
-    return circle
-end
-
--- tạo esp cho mob
-local function addESP(mob)
-    if mobESP[mob] then return end
-    local circle = createCircle()
-    mobESP[mob] = circle
-
-    mob.AncestryChanged:Connect(function(_, parent)
-        if not parent then
-            if mobESP[mob] then
-                mobESP[mob]:Remove()
-                mobESP[mob] = nil
-            end
-        end
-    end)
-end
-
--- update vòng tròn theo vị trí
-RunService.RenderStepped:Connect(function()
-    local char = LocalPlayer.Character
-    local hrp = char and char:FindFirstChild("HumanoidRootPart")
-    if not hrp then return end
-
-    for mob, circle in pairs(mobESP) do
-        if mob and mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChildOfClass("Humanoid") and mob.Humanoid.Health > 0 then
-            local distance = (mob.HumanoidRootPart.Position - hrp.Position).Magnitude
-            if distance <= MAX_DISTANCE then
-                local pos, onScreen = Camera:WorldToViewportPoint(mob.HumanoidRootPart.Position)
-                if onScreen then
-                    circle.Position = Vector2.new(pos.X, pos.Y)
-                    circle.Visible = true
-                else
-                    circle.Visible = false
-                end
-            else
-                circle.Visible = false
-            end
-        else
-            circle.Visible = false
-        end
-    end
-end)
-
--- theo dõi workspace.Enemies
-for _, mob in ipairs(workspace.Enemies:GetChildren()) do
-    addESP(mob)
-end
-workspace.Enemies.ChildAdded:Connect(function(mob)
-    task.wait(0.2)
-    addESP(mob)
-end)
-
 -- Skibidi
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local LocalPlayer = Players.LocalPlayer
 
-task.delay(25, function() -- ⏳ Chờ 10 giây mới bật script này
+task.delay(1, function() -- ⏳ Chờ 10 giây mới bật script này
 
     -- Hàm tạo aura xanh ngọc
     local function createAquaAura(char)
@@ -110,7 +36,7 @@ task.delay(25, function() -- ⏳ Chờ 10 giây mới bật script này
 
             if humanoid.FloorMaterial == Enum.Material.Air then
                 floatTime += dt
-                if floatTime >= 3 then
+                if floatTime >= 1 then
                     aura.FillTransparency = 0.3
                     aura.OutlineTransparency = 0
                 end
@@ -157,7 +83,7 @@ local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 
 -- Tùy chỉnh
-local TEXT = "Fast Attack By HNC Roblox"
+local TEXT = "HNC HUB - V6 [BETA]"
 local TEXT_SIZE = 14                 -- kích thước chữ (không quá to)
 local GUI_OFFSET = Vector3.new(0, 1.8, 0) -- khoảng cách so với đầu
 local RAINBOW_SPEED = 1.0           -- tốc độ đổi màu (1 = bình thường, tăng để nhanh hơn)
@@ -233,9 +159,9 @@ local Window = WindUI:CreateWindow({
     Title = "HNC Hub - V6 [Beta]",
     Author = "By HNC Roblox",
     Folder = "By HNC Roblox",
-    Size = UDim2.fromOffset(420, 200),
+    Size = UDim2.fromOffset(420, 300),
     Transparent = true,
-    Theme = "Dark",
+    Theme = "Violet",
     SideBarWidth = 190,
     HasOutline = false,
 });
@@ -10231,4 +10157,5 @@ spawn(function()
 			end;
 		end);
 	end;
+
 end);
