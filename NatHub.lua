@@ -376,17 +376,17 @@ Window:EditOpenButton({
 });
 local Tabs = {
 	MainTab = Window:Tab({
-		Title = "Main",
+		Title = "Home",
 		Icon = "house",
 		Desc = "Main Section"
 	}),
 	OthersTab = Window:Tab({
-		Title = "Others",
+		Title = "More",
 		Icon = "inbox",
 		Desc = "Farming Section"
 	}),
 	ItemsTab = Window:Tab({
-		Title = "Items",
+		Title = "Quest×Items",
 		Icon = "box",
 		Desc = "Items Section"
 	}),
@@ -396,7 +396,7 @@ local Tabs = {
 		Desc = "Settings Section"
 	}),
 	LocalPlayerTab = Window:Tab({
-		Title = "Local Player",
+		Title = "Visual",
 		Icon = "user",
 		Desc = "Local Player Section"
 	}),
@@ -426,12 +426,12 @@ local Tabs = {
 		Desc = "Dragon Dojo Section"
 	}),
 	RaceTab = Window:Tab({
-		Title = "Race",
+		Title = "Trial×Race",
 		Icon = "bot",
 		Desc = "Race Section"
 	}),
 	CombatTab = Window:Tab({
-		Title = "Combat",
+		Title = "PvP",
 		Icon = "sword",
 		Desc = "Combat Section"
 	}),
@@ -446,7 +446,7 @@ local Tabs = {
 		Desc = "Esp Section"
 	}),
 	TeleportTab = Window:Tab({
-		Title = "Teleport",
+		Title = "World",
 		Icon = "map-pinned",
 		Desc = "Teleport Section"
 	}),
@@ -2636,13 +2636,13 @@ spawn(function()
 end);
 DiscordServerParagraph = Tabs.MainTab:Paragraph({
 	Title = "Discord Server",
-	Desc = "Join discord server to get update info and webhooks!",
+	Desc = "Join discord server to get update info and new script!",
 	TextXAlignment = "Left",
 	Buttons = {
 		{
 			Title = "Copy Link",
 			Callback = function()
-				setclipboard("https://discord.gg/BJVQqMtZ2A");
+				setclipboard("discord.gg/BBMEE4T6ep");
 				WindUI:Notify({
 					Title = "Notification",
 					Content = "Copied",
@@ -10363,4 +10363,5 @@ spawn(function()
 	end;
 
 end);
+
 
