@@ -275,7 +275,7 @@ local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 
 -- Tùy chỉnh
-local TEXT = "HNC HUB - V7 [Super Bring Mobs]"
+local TEXT = "HNC HUB - V7"
 local TEXT_SIZE = 14                 -- kích thước chữ (không quá to)
 local GUI_OFFSET = Vector3.new(0, 1.8, 0) -- khoảng cách so với đầu
 local RAINBOW_SPEED = 1.0           -- tốc độ đổi màu (1 = bình thường, tăng để nhanh hơn)
@@ -348,13 +348,13 @@ player.AncestryChanged:Connect(function(_, parent)
 end)
 local WindUI = (loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua")))();
 local Window = WindUI:CreateWindow({
-    Title = "HNC Hub - V6 [Beta]",
+    Title = "HNC Hub - V7",
     Author = "By HNC Roblox",
     Folder = "By HNC Roblox",
-    Size = UDim2.fromOffset(420, 300),
+    Size = UDim2.fromOffset(320, 300),
     Transparent = true,
     Theme = "Violet",
-    SideBarWidth = 110,
+    SideBarWidth = 130,
     HasOutline = false,
 });
 Window:EditOpenButton({
@@ -501,12 +501,12 @@ _G.Settings = {
 	},
 	Setting = {
 		["Spin Position"] = false,
-		["Farm Distance"] = 35,
+		["Farm Distance"] = 25,
 		["Player Tween Speed"] = 350,
 		["Bring Mob"] = true,
-		["Bring Mob Mode"] = "Normal",
+		["Bring Mob Mode"] = "Super High",
 		["Fast Attack"] = true,
-		["Fast Attack Mode"] = "Normal",
+		["Fast Attack Mode"] = "Super Fast",
 		["Attack Aura"] = true,
 		["Hide Notification"] = false,
 		["Hide Damage Text"] = true,
@@ -521,7 +521,7 @@ _G.Settings = {
 		["Fruit Mastery Skill F"] = false,
 		["Gun Mastery Skill Z"] = true,
 		["Gun Mastery Skill X"] = true,
-		["Auto Set Spawn Point"] = true,
+		["Auto Set Spawn Point"] = false,
 		["Auto Observation"] = false,
 		["Auto Haki"] = true,
 		["Auto Rejoin"] = true
@@ -2648,7 +2648,8 @@ LevelFarmSection = Tabs.MainTab:Section({
 local WeaponList = {
 	"Melee",
 	"Sword",
-	"Fruit"
+	"Blox Fruit",
+	"None"
 };
 ChooseWeaponDropdown = Tabs.MainTab:Dropdown({
 	Title = "Choose Weapon",
@@ -2824,7 +2825,7 @@ spawn(function()
 end);
 AutoFastFarmToggle = Tabs.MainTab:Toggle({
 	Title = "Auto Fast Farm",
-	Desc = "Function Sea 1 Only",
+	Desc = "Sea 1 Only",
 	Value = _G.Settings.Main["Auto Fast Farm"],
 	Callback = function(state)
 		_G.Settings.Main["Auto Fast Farm"] = state;
@@ -4876,9 +4877,9 @@ spawn(function()
 				elseif _G.Settings.Setting["Bring Mob Mode"] == "Normal" then
 					BringMobDistance = 450;
 				elseif _G.Settings.Setting["Bring Mob Mode"] == "High" then
-					BringMobDistance = 1000;
+					BringMobDistance = 600;
 				elseif _G.Settings.Setting["Bring Mob Mode"] == "Super High" then
-					BringMobDistance = 5000;
+					BringMobDistance = 850;
 				end;
 			end);
 		end;
@@ -5139,7 +5140,7 @@ GunSwordSection = Tabs.ItemsTab:Section({
 });
 AutoSecondSeaToggle = Tabs.ItemsTab:Toggle({
 	Title = "Auto Second Sea",
-	Desc = "Function Sea 1 Only",
+	Desc = "Sea 1 Only",
 	Value = _G.Settings.Items["Auto Second Sea"],
 	Callback = function(state)
 		_G.Settings.Items["Auto Second Sea"] = state;
@@ -5149,7 +5150,7 @@ AutoSecondSeaToggle = Tabs.ItemsTab:Toggle({
 });
 AutoThirdSeaToggle = Tabs.ItemsTab:Toggle({
 	Title = "Auto Third Sea",
-	Desc = "Function Sea 2 Only",
+	Desc = "Sea 2 Only",
 	Value = _G.Settings.Items["Auto Third Sea"],
 	Callback = function(state)
 		_G.Settings.Items["Auto Third Sea"] = state;
@@ -10354,6 +10355,7 @@ spawn(function()
 	end;
 
 end);
+
 
 
 
