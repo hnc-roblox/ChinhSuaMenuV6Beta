@@ -275,7 +275,7 @@ local RunService = game:GetService("RunService")
 local player = Players.LocalPlayer
 
 -- Tùy chỉnh
-local TEXT = "HNC HUB - V6 [BETA]"
+local TEXT = "HNC HUB - V7 [Super Bring Mobs]"
 local TEXT_SIZE = 14                 -- kích thước chữ (không quá to)
 local GUI_OFFSET = Vector3.new(0, 1.8, 0) -- khoảng cách so với đầu
 local RAINBOW_SPEED = 1.0           -- tốc độ đổi màu (1 = bình thường, tăng để nhanh hơn)
@@ -4829,7 +4829,8 @@ end);
 local BringList = {
 	"Low",
 	"Normal",
-	"High"
+	"High",
+	"Super High"
 };
 BringMobDropdown = Tabs.SettingsTab:Dropdown({
 	Title = "Bring Mob",
@@ -4871,11 +4872,13 @@ spawn(function()
 		if _G.Settings.Setting["Bring Mob"] then
 			pcall(function()
 				if _G.Settings.Setting["Bring Mob Mode"] == "Low" then
-					BringMobDistance = 150;
-				elseif _G.Settings.Setting["Bring Mob Mode"] == "Normal" then
 					BringMobDistance = 250;
+				elseif _G.Settings.Setting["Bring Mob Mode"] == "Normal" then
+					BringMobDistance = 450;
 				elseif _G.Settings.Setting["Bring Mob Mode"] == "High" then
-					BringMobDistance = 800;
+					BringMobDistance = 1000;
+				elseif _G.Settings.Setting["Bring Mob Mode"] == "Super High" then
+					BringMobDistance = 5000;
 				end;
 			end);
 		end;
@@ -10351,6 +10354,7 @@ spawn(function()
 	end;
 
 end);
+
 
 
 
