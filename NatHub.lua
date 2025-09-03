@@ -265,18 +265,6 @@ local plr = game:GetService("Players").LocalPlayer
 local Notification = require(game:GetService("ReplicatedStorage").Notification)
 
 -- Thông báo chào mừng
-Notification.new("<Color=Yellow>Mùng Hai Tháng Chín rợp cờ,<Color=/>"):Display()
-task.wait(1)
-Notification.new("<Color=Yellow>Non sông gấm vóc đợi chờ vươn xa.<Color=/>"):Display()
-task.wait(1)
-Notification.new("<Color=Yellow>Máu hồng bao thuở ông cha,<Color=/>"):Display()
-task.wait(1)
-Notification.new("<Color=Yellow>Cho nay đất Việt ngọc ngà sáng tươi.<Color=/>"):Display()
-task.wait(1)
-Notification.new("<Color=Yellow><Chúc Mừng Ngày Quốc Khánh><Color=/>"):Display()
-task.wait(1)
-Notification.new("<Color=Yellow>Mùng 2 Tháng 9<Color=/>"):Display()
-task.wait(1)
 Notification.new("<Color=Yellow>HNC Roblox<Color=/>"):Display()
 task.wait(5)
 -- Anh em đổi thông báo ở trên nha vd: Notification.new("<Color=White>đổi thông báo chỗ này nè!<Color=/>"):Display()
@@ -366,13 +354,13 @@ local Window = WindUI:CreateWindow({
     Size = UDim2.fromOffset(420, 300),
     Transparent = true,
     Theme = "Violet",
-    SideBarWidth = 190,
+    SideBarWidth = 110,
     HasOutline = false,
 });
 Window:EditOpenButton({
     Title = "OPEN",
     CornerRadius = UDim.new(1, 0),
-    Draggable = false
+    Draggable = true
 });
 local Tabs = {
 	MainTab = Window:Tab({
@@ -10363,5 +10351,6 @@ spawn(function()
 	end;
 
 end);
+
 
 
